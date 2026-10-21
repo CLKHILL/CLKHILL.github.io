@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventario de productos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Encabezado y navegacion (los links bajan a cada seccion) -->
+  <header>
+    <h1>Inventario de productos</h1>
+    <nav>
+      <a href="#seccion-categorias">Categorías</a>
+      <a href="#seccion-productos">Productos</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Aqui salen los mensajes de exito o error -->
+    <p id="mensaje" class="oculto" role="alert"></p>
+
+    <!-- ================= CATEGORIAS ================= -->
+    <section id="seccion-categorias">
+      <h2>Categorías</h2>
+
+      <form id="form-categoria">
+        <!-- este input escondido guarda el id cuando estoy editando -->
+        <input type="hidden" id="categoria-id">
+
+        <label for="categoria-nombre">Nombre de la categoría</label>
+        <input type="text" id="categoria-nombre" placeholder="Ej. Bebidas">
+
+        <button type="submit" id="btn-guardar-categoria">Guardar</button>
+        <button type="button" id="btn-cancelar-categoria" class="oculto">Cancelar</button>
+      </form>
+
+      <p id="cargando-categorias">Cargando...</p>
+      <table>
+        <thead>
+          <tr><th>Nombre</th><th>Acciones</th></tr>
+        </thead>
+        <tbody id="tabla-categorias"></tbody>
+      </table>
+    </section>
+
+    <!-- ================= PRODUCTOS ================= -->
+    <section id="seccion-productos">
+      <h2>Productos</h2>
+
+      <form id="form-producto">
+        <input type="hidden" id="producto-id">
+
+        <label for="producto-nombre">Nombre</label>
+        <input type="text" id="producto-nombre" placeholder="Ej. Refresco 600ml">
+
+        <label for="producto-precio">Precio</label>
+        <input type="number" id="producto-precio" step="0.01" min="0">
+
+        <label for="producto-cantidad">Cantidad</label>
+        <input type="number" id="producto-cantidad" min="0">
+
+        <label for="producto-categoria">Categoría</label>
+        <select id="producto-categoria">
+          <option value="">-- Selecciona una categoría --</option>
+        </select>
+
+        <button type="submit" id="btn-guardar-producto">Guardar</button>
+        <button type="button" id="btn-cancelar-producto" class="oculto">Cancelar</button>
+      </form>
+
+      <p id="cargando-productos">Cargando...</p>
+      <div class="tabla-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Precio</th>
+              <th>Cantidad</th>
+              <th>Categoría</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-productos"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Proyecto para exentar - Programación Web</p>
+  </footer>
+
+  <!-- Libreria de Supabase (CDN) y despues mi codigo -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+</body>
+</html>
